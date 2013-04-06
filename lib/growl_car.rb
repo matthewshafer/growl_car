@@ -1,7 +1,7 @@
 require "growl_car/version"
 require "growl_car/configuration"
 require "growl_car/client"
-require 'Atomic'
+require 'atomic'
 
 module GrowlCar
 
