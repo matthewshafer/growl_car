@@ -21,7 +21,61 @@ describe GrowlCar do
 
     describe ".client" do
       it "returns a GrowlCar::Client" do
-        expect(GrowlCar.client).to be_kind_of GrowlCar::Client
+        expect(GrowlCar.client).to be_kind_of(GrowlCar::Client)
+      end
+    end
+  end
+
+  describe ".configuration" do
+
+    context "when invalid configuration data is provided" do
+
+      it "raises a configuration error" do
+        expect {
+          GrowlCar.configure do |config|
+            config.username = 1234
+            config.password = "test_password"
+          end
+        }.to raise_error(GrowlCar::Error::ConfigurationError)
+      end
+    end
+
+    context "when valid configuration data is provided" do
+
+      before do
+        GrowlCar.configure do |config|
+          config.username = "test"
+          config.password = "pass"
+        end
+      end
+
+      it "sets the username" do
+        expect(GrowlCar.instance_variable_get(:"@username")).to eql("test")
+      end
+
+      it "sets the password" do
+        expect(GrowlCar.instance_variable_get(:"@password")).to eql("pass")
+      end
+    end
+  end
+
+  describe ".reset!" do
+
+    context "resets valid valid configuration details" do
+
+      before do
+        GrowlCar.configure do |config|
+          config.username = "test"
+          config.password = "pass"
+        end
+      end
+
+      it "sets the username to nil" do
+        expect { GrowlCar.reset! }.to change { GrowlCar.instance_variable_get(:"@username") }
+      end
+
+      it "sets the password to nil" do
+        expect { GrowlCar.reset! }.to change { GrowlCar.instance_variable_get(:"@password") }
       end
     end
   end

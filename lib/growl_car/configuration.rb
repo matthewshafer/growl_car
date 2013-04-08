@@ -14,6 +14,13 @@ module GrowlCar
     def configure
       yield self
       validate_credentials!
+      self
+    end
+
+    def reset!
+      GrowlCar::Configuration.keys.each do |key|
+        instance_variable_set(:"@#{key}", nil)
+      end
     end
 
     private
@@ -28,7 +35,7 @@ module GrowlCar
       def validate_credentials!
         credentials.each do |credential, value|
           unless value.is_a?(String)
-            raise ConfigurationError, "Invalid #{credential}. Must be a string"
+            raise GrowlCar::Error::ConfigurationError, "Invalid #{credential}. Must be a string"
           end
         end
       end
