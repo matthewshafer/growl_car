@@ -12,3 +12,7 @@ require 'rspec'
 require 'webmock/rspec'
 
 WebMock.disable_net_connect!(allow: 'coveralls.io')
+
+def stub_post(path)
+  stub_request(:post, "https://boxcar.io" + path)
+end

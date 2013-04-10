@@ -27,4 +27,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "coveralls", "~> 0.6.4"
 
   spec.add_dependency "atomic", "~> 1.1.0"
+  spec.add_dependency "httpclient", "~> 2.3.3"
 end
