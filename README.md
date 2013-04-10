@@ -22,8 +22,52 @@ Or install it yourself as:
 
 ## Usage
 
-Some details here soon
+You will need to enable the Growl provider on your boxcar account.
+
+### Sample Usage
+
+```ruby
+require 'growl_car'
+
+GrowlCar.configure do |config|
+  config.username = "YOUR_BOXCAR_USERNAME"
+  config.password = "YOUR_BOXCAR_PASSWORD"
+end
+
+GrowlCar.send_growl_notification("GrowlCar-test", "This message is from GrowlCar")
+```
+
+It is also possible to instantiate a ``` GrowlCar::Client ``` to handle multiple users:
+
+```ruby
+matt = GrowlCar::Client.new(username: MATT_BOXCAR_USERNAME, password: MATT_BOXCAR_PASSWORD)
+
+alex = GrowlCar::Client.new(username: ALEX_BOXCAR_USERNAME, password: ALEX_BOXCAR_PASSWORD)
+
+matt.send_growl_notification("GrowlCar-matt", "Hey how's it going?")
+
+alex.send_growl_notification("GrowlCar-alex", "The Food is ready")
+```
+
+### Errors
+
+the ``` send_growl_notification ``` method can raise errors if it encounters any issues with boxcar.
+If is unable to log in (unauthorized response) it will raise a ``` GrowlCar::Error::UnauthorizedError ```
+For any response that is not a 200 or 401 (unauthorized) it will raise a ``` GrowlCar::Error::HttpError ```
 
 ## Contributing
 
-More info coming soon
+### Issues
+
+Issues can be reported right here on the github repo.
+Everyone is encouraged to write an issue if they find a bug or have a request.
+
+### Pull Requests
+
+Everyone can also submit pull requests.  Here are some guidelines:
+
+1. Fork the repo
+2. Create a branch (make the name descriptive)
+3. Write tests and work on your changes
+4. Make sure all tests pass and your code is covered
+5. Open a pull request and write a description of what you did
