@@ -9,6 +9,10 @@ module GrowlCar
           :password
         ]
       end
+
+      def boxcar_url
+        "https://boxcar.io/notifications"
+      end
     end
 
     def configure
