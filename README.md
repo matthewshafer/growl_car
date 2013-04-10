@@ -57,7 +57,7 @@ For any response that is not a 200 or 401 (unauthorized) it will raise a ``` Gro
 
 ## Documentation
 
-You can find the latest documentation of the master branch [here]: http://rubydoc.info/github/matthewshafer/growl_car/
+You can find the latest documentation of the master branch here: http://rubydoc.info/github/matthewshafer/growl_car/
 
 ## Contributing
 
