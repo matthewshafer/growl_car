@@ -5,7 +5,7 @@ describe GrowlCar::Configuration do
   context ".keys" do
 
     it "returns an array of keys" do
-      expect(GrowlCar::Configuration.keys).to eql([:username, :passsword])
+      expect(GrowlCar::Configuration.keys).to eql([:username, :password])
     end
   end
 
