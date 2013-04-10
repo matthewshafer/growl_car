@@ -55,6 +55,10 @@ the ``` send_growl_notification ``` method can raise errors if it encounters any
 If is unable to log in (unauthorized response) it will raise a ``` GrowlCar::Error::UnauthorizedError ```
 For any response that is not a 200 or 401 (unauthorized) it will raise a ``` GrowlCar::Error::HttpError ```
 
+## Documentation
+
+You can find the latest documentation of the master branch [here]: http://rubydoc.info/github/matthewshafer/growl_car/
+
 ## Contributing
 
 ### Issues
