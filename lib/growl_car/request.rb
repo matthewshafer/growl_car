@@ -3,6 +3,7 @@ require 'httpclient'
 module GrowlCar
   module Request
 
+    # Initialize HTTPClient for requests
     def initialize
       @http = HTTPClient.new
     end

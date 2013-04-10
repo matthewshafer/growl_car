@@ -7,6 +7,10 @@ module GrowlCar
     include GrowlCar::Request
     include GrowlCar::GrowlNotification
 
+    # Initialize a new GrowlCar::Client
+    #
+    # @param options [Hash]
+    # @return [GrowlCar::Client]
     def initialize(options={})
       GrowlCar::Configuration.keys.each do |key|
         instance_variable_set(:"@#{key}", options[key])
