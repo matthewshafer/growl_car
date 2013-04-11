@@ -1,3 +1,3 @@
 module GrowlCar
-  VERSION = "0.0.1.alpha"
+  VERSION = "0.0.1"
 end
