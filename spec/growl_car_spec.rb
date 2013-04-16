@@ -28,13 +28,6 @@ describe GrowlCar do
         client = GrowlCar.client
         expect(GrowlCar.client).to eql(client)
       end
-
-      it "rescues an Atomic::ConcurrentUpdateError and does nothing" do
-        atomic_exception = double("Atomic", value: nil).as_null_object
-        atomic_exception.stub(:try_update).and_raise(Atomic::ConcurrentUpdateError)
-        GrowlCar.instance_variable_set(:"@client", atomic_exception)
-        expect { GrowlCar.client }.not_to raise_error(Atomic::ConcurrentUpdateError)
-      end
     end
   end
 

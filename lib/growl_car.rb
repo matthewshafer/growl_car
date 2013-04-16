@@ -12,7 +12,7 @@ module GrowlCar
     include Configuration
 
     def client
-      create_client unless @client.value
+      @client.compare_and_swap(nil, GrowlCar::Client.new(credentials)) unless @client.value
       @client.value
     end
 
@@ -25,14 +25,6 @@ module GrowlCar
       def method_missing(method_name, *args, &block)
         return super unless client.respond_to?(method_name)
         client.send(method_name, *args, &block)
-      end
-
-      def create_client
-        begin
-          @client.try_update { GrowlCar::Client.new(credentials) }
-        rescue Atomic::ConcurrentUpdateError
-
-        end
       end
   end
 end
